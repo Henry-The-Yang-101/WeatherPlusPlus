@@ -23,7 +23,7 @@ function App() {
 
   const fetchWeatherData = async () => {
     try {
-      const response = await fetch(`https://api.openweathermap.org/data/3.0/onecall?lat=${latitude}&lon=${longitude}&appid=a99f3e2670e131021b6a9da5b3b1fa8a&units=metric`);
+      const response = await fetch(`https://api.openweathermap.org/data/3.0/onecall?lat=${latitude}&lon=${longitude}&appid=*redacted`);
       const data = await response.json();
       setWeatherData(data);
       console.log("Fetched weather");

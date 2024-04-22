@@ -1,0 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
+
+body {
+  margin: 0;
+  padding: 0;
+  position: fixed;
+  overflow: hidden;
+  text-align: center;
+  font-family: "Roboto Mono", Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+  -moz-osx-font-smoothing: grayscale;
+}

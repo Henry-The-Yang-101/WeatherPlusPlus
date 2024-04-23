@@ -1,4 +1,3 @@
-import React, { useState } from 'react';
 import { CircleLoader } from 'react-spinners';
 import './Loading.css';
 import background from '../Assets/bg.mp4';

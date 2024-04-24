@@ -1,12 +1,17 @@
 import React, { useEffect, useState } from 'react';
-import logo from './Assets/logo.svg';
+import sun from './Assets/sun.svg';
 import './App.css';
 import Loading from './components/Loading'
+import background from './Assets/bg.mp4';
 
 // Define the type for the weather data based on your API's response structure.
 interface WeatherData {
   current: {
     temp: number;
+    feels_like: number;
+    sunrise: number;
+    sunset: number;
+    humidity: number;
   };
 }
 
@@ -15,7 +20,7 @@ function App() {
   const [latitude, setLatitude] = useState<number>(0);
   const [longitude, setLongitude] = useState<number>(0);
   const [weatherData, setWeatherData] = useState<WeatherData | null>(null);
-  
+
   const success = (position: GeolocationPosition) => {
     setLatitude(position.coords.latitude);
     setLongitude(position.coords.longitude);
@@ -40,6 +45,7 @@ function App() {
     }
   }
 
+
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(success, error);
   } else {
@@ -50,20 +56,26 @@ function App() {
     if (hasLocation) {
       fetchWeatherData();
     }
+    console.log("bruh");
   }, [hasLocation]);
 
   return (
     <div className="App">
-      {weatherData 
+      <video className='bgVideo' autoPlay loop muted>
+        <source src={background} type='video/mp4' />
+      </video>
+      {weatherData
         ? <header className="App-header">
-            <img src={logo} className="App-logo" alt="logo" />
+            <img src={sun} className="App-logo" alt="logo" />
+            <p>Current Temperature: {weatherData.current.temp}ºC</p>
+            <p>Feels Like: {weatherData.current.feels_like}ºC</p>
+            <p>Sunrise: {weatherData.current.feels_like}ºC</p>
+            <p>Sunset: {weatherData.current.feels_like}ºC</p>
             <p>
-            Latitude: {latitude}, Longitude: {longitude}
+              Latitude: {latitude}, Longitude: {longitude}
             </p>
             <button type="button" className="btn btn-primary" onClick={fetchWeatherData}>Fetch Weather Data</button>
-            <div>
-              <p>Current Temperature: {weatherData.current.temp}ºC</p>
-            </div>
+            
             <a
               className="App-link"
               href="https://reactjs.org"
@@ -73,9 +85,8 @@ function App() {
               Learn React
             </a>
           </header>
-        : <Loading/>
+        : <Loading />
       }
-      
     </div>
   );
 }

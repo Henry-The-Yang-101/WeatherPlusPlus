@@ -3,7 +3,7 @@
   padding: 0;
   width: 100%;
   height: 100%;
-  background-color: #282c34;
+  background-color: transparent;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -12,18 +12,13 @@
   color: white;
 }
 
-.bgVideo {
-  width: 100vw;
-  height: 100vw; 
-  object-fit: cover;
-}
-
 .loadingContent {
   position: absolute;
   width: 100%;
   height: 100%;
   top: 0;
   display: flex;
+  flex: 0;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -36,5 +31,5 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.2);
+  background-color: rgba(0, 0, 0, 0.5);
 }
